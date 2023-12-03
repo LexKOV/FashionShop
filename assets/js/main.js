@@ -12,7 +12,7 @@
 const swiperCategories = new Swiper(".categories__container", {
   spaceBetween: 24,
   loop: true,
-  
+
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
@@ -37,3 +37,23 @@ const swiperCategories = new Swiper(".categories__container", {
 /*=============== SWIPER PRODUCTS ===============*/
 
 /*=============== PRODUCTS TABS ===============*/
+const tabs = document.querySelectorAll("[data-target]"),
+  tabContents = document.querySelectorAll("[content]");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = document.querySelector(tab.dataset.target);
+      tabContents.forEach((tabContents) => {
+        tabContents.classList.remove('active-tab');
+      });
+
+      target.classList.add('active-tab');
+
+      tabs.forEach((tab) => {
+        tab.classList.remove('active-tab');
+      });
+
+      tab.classList.add('active-tab');
+    });
+
+  });
